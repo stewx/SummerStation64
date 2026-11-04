@@ -637,7 +637,10 @@ static void button_icon_draw (int x, int y, const char *button) {
         fill(x + half, y, x + width - half, y + BADGE_HEIGHT, color);
     }
 
-    text(x, y, width, BADGE_HEIGHT, ALIGN_CENTER, STL_WHITE, button);
+    /* Centred by the font's line box and advance, a label sits 1.5 px high
+       (the box leaves room below for descenders) and 0.5 to 1 px left (each
+       letter's advance carries spacing on its right), so it is nudged back. */
+    text(x + 1, y + 1, width, BADGE_HEIGHT, ALIGN_CENTER, STL_WHITE, button);
 }
 
 void games_ui_hints_backdrop_draw (void) {
